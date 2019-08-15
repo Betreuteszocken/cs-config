@@ -1,0 +1,105 @@
+{#- @var form \Betreuteszocken\CsConfig\Form\Type\CycleConfig\CycleConfigFormType|\Symfony\Component\Form\FormView -#}
+
+{%- extends 'base.html.twig' -%}
+
+{%- block page -%}
+
+    <section id="cycle-config">
+
+        <h2><a href="{{ path('map-cycles') }}">Map-Cycle</a> > Konfiguration</h2>
+
+        {{- form_start(form) -}}
+
+        <div class="form-group row">
+            <div class="col">
+                {{ form_label(form.mamiMaps) }}
+                {{ form_widget(form.mamiMaps) }}
+                {{ form_errors(form.mamiMaps) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                {{ form_label(form.userMaps) }}
+                {{ form_widget(form.userMaps) }}
+                {{ form_errors(form.userMaps) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                {{ form_label(form.defaultMaps) }}
+                {{ form_widget(form.defaultMaps) }}
+                {{ form_errors(form.defaultMaps) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                {{ form_label(form.defaultCategoryMaps) }}
+                {{ form_widget(form.defaultCategoryMaps) }}
+                {{ form_errors(form.defaultCategoryMaps) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                {{ form_label(form.originMaps) }}
+                {{ form_widget(form.originMaps) }}
+                {{ form_errors(form.originMaps) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                {{ form_label(form.randomMaps) }}
+                {{ form_widget(form.randomMaps) }}
+                {{ form_errors(form.randomMaps) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                {{ form_label(form.total) }}
+                {{ form_widget(form.total) }}
+                {{ form_errors(form.total) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <input type="submit" value="Speichern">
+            </div>
+        </div>
+
+        {{- form_end(form) -}}
+
+    </section>
+
+    <script>
+
+        /**
+         * @return {NodeListOf<Element>}
+         */
+        function getCalcNodeList() {
+            return document.querySelectorAll("[name^='cycle_config_form']:not(#cycle_config_form_total):not(form):not([type='hidden'])");
+        }
+
+        function updateTotal() {
+            let total = 0;
+            getCalcNodeList().forEach(function (elem) {
+                if (elem.tagName === "SELECT") {
+                    total += elem.selectedOptions.length;
+                } else {
+                    total += parseInt(elem.value, 10);
+                }
+            });
+            document.getElementById("cycle_config_form_total").value = total;
+        }
+
+        getCalcNodeList().forEach(function (elem) {
+            elem.addEventListener("change", updateTotal, false);
+        });
+    </script>
+
+{%- endblock -%}

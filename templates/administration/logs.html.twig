@@ -1,0 +1,42 @@
+{#- @var logs \Betreuteszocken\CsConfig\Entity\Log[]-#}
+
+{%- extends 'base.html.twig' -%}
+
+{%- block page -%}
+
+    <section id="admin-logs">
+
+        <h2><a href="{{ path('admin') }}">Verwaltung</a> > BZ-Einstellungen</h2>
+
+        <table id="logs" border="1">
+            <tr>
+                <th>Datum</th>
+                <th>Ereignis</th>
+                <th>Benutzer</th>
+                <th>Inhalt/Hinweis</th>
+            </tr>
+            {% for _log in logs %}
+                <tr class="log">
+                    <td>
+                        <pre>{{ _log.createdAt|date('Y-m-d H:i:s') }}</pre>
+                    </td>
+                    <td class="log-type">
+                        <pre>{{ _log.type|logType }}</pre>
+                    </td>
+                    <td>
+                        <pre>{{ _log.createdBy is null ? 'SYSTEM' : _log.createdBy }}</pre>
+                    </td>
+                    <td>
+                        {% if _log.type == constant('Betreuteszocken\\CsConfig\\DBAL\\LogType::TYPE_MAP_CYCLE_NEW') %}
+                            <pre class="file">{{ _log.message }}</pre>
+                        {% else %}
+                            <pre>{{ _log.message }}</pre>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </section>
+
+{%- endblock -%}

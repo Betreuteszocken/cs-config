@@ -1,0 +1,55 @@
+{#- @var mamiMaps            \Betreuteszocken\CsConfig\Entity\Map[] -#}
+{#- @var userMaps            \Betreuteszocken\CsConfig\Entity\Map[] -#}
+{#- @var defaultMaps         \Betreuteszocken\CsConfig\Entity\Map[] -#}
+{#- @var defaultCategoryMaps \Betreuteszocken\CsConfig\Entity\Map[] -#}
+{#- @var originMaps          \Betreuteszocken\CsConfig\Entity\Map[] -#}
+{#- @var randomMaps          \Betreuteszocken\CsConfig\Entity\Map[] -#}
+{#- @var userDays            \int -#}
+
+; Mapcycle file
+; Line starting with ; is a comment
+;
+; File created at: {{ 'now'|date("d.m.Y. H:i:s") }}
+;
+
+; MaMi Maps
+{% for _map in mamiMaps %}
+{{ _map.name }}
+{% else %}
+; not able to generate the mami maps
+{% endfor %}
+
+; Forum-Maps (gewählte Maps aller Nutzer, die in den vergangenen {{ userDays }} Tagen aktiv gewesen sind)
+{% for _map in userMaps %}
+{{ _map.name }}
+{% else %}
+; not able to generate the forum's user maps
+{% endfor %}
+
+; Standard BZ Maps
+{% for _map in defaultMaps %}
+{{ _map.name }}
+{% else %}
+; not able to generate the default maps
+{% endfor %}
+
+; Maps aus Standard BZ Kategorien
+{% for _map in defaultCategoryMaps %}
+{{ _map.name }}
+{% else %}
+; not able to generate the default category maps
+{% endfor %}
+
+; Standard CS1.6 Maps
+{% for _map in originMaps %}
+{{ _map.name }}
+{% else %}
+; not able to generate the origin maps
+{% endfor %}
+
+; Zufalls-Maps
+{% for _map in randomMaps %}
+{{ _map.name }}
+{% else %}
+; not able to generate the random maps
+{% endfor %}

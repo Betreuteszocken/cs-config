@@ -1,0 +1,33 @@
+{#- @var cycle \Betreuteszocken\CsConfig\Entity\Cycle-#}
+
+{%- extends 'base.html.twig' -%}
+
+{%- block page -%}
+
+    <section id="administration">
+
+        <h2>Map-Cycles</h2>
+
+        <ul>
+            <li>
+                <a href="{{ path('map-cycle-history') }}">Historie</a>
+            </li>
+            <li>
+                <a href="{{ path('map-cycle-update-config') }}">Konfiguration</a>
+            </li>
+        </ul>
+
+        {% if cycle is not null %}
+            {% include 'map-cycle/map-cycyle.html.twig' with {'mapCycle': cycle, 'current': true} only %}
+
+            <h4>mapcycle.txt</h4>
+            <pre class="file">
+            {{- cycle.mapcycleTxt -}}
+        </pre>
+        {% else %}
+            <p>Noch keine Map-Cycle vorhanden.</p>
+        {% endif %}
+
+    </section>
+
+{%- endblock -%}

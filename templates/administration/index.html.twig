@@ -1,0 +1,32 @@
+{#- @var logs \Betreuteszocken\CsConfig\Entity\Log[]-#}
+
+{%- extends 'base.html.twig' -%}
+
+{%- block page -%}
+
+    <section id="administration">
+
+        <h2>Verwaltung</h2>
+
+        <ul>
+            <li>
+                <a href="{{ path('admin-default-config-update') }}">BZ-Einstellungen</a>
+            </li>
+            <li>
+                <a href="{{ path('admin-logs') }}">Log-Einträge</a>
+            </li>
+        </ul>
+
+        <form action="{{ path('admin-map-files-sync') }}" method="POST">
+            <input type="submit" value="Karten synchronisieren">
+            <span>Synchronisiert alle in der Datenbank gespeicherten Karten mit den FastDL-Karten.</span>
+        </form>
+
+        <form action="{{ path('admin-mapcycletxt-recreate') }}" method="POST">
+            <input type="submit" value="Neuen Map-Cycle generieren">
+            <span>Wählt neue Karten gemäß der aktuellen Map-Cycle-Konfiguration und generiert eine neue <code>mapcycle.txt</code> Datei.</span>
+        </form>
+
+    </section>
+
+{%- endblock -%}

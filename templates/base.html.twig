@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" media="screen" href="{{ asset('css/default.css') }}"/>
+    <!-- Include Choices CSS -->
+    {% if app.environment == 'prod' %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    {% else %}
+        <link rel="stylesheet" href="{{ asset('external/choice.js/choices.min.css') }}">
+    {% endif %}
+</head>
+<body>
+<div id="content">
+    {%- block header -%}
+        <h2>Menü</h2>
+
+        {%- block navigation -%}
+            {%- include 'navigation.html.twig' -%}
+        {%- endblock navigation -%}
+
+        <hr>
+    {%- endblock header -%}
+
+    {%- block page -%}{%- endblock page -%}
+    {%- block footer -%}{%- endblock -%}
+</div>
+
+<!-- Include Choices JavaScript -->
+{% if app.environment == 'prod' %}
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+{% else %}
+    <script src="{{ asset('external/choice.js/choices.min.js') }}"></script>
+{% endif %}
+
+<script>
+
+    document.querySelectorAll(".js-choice").forEach(function (elem) {
+        elem.jsChoice = new Choices(elem, {
+            removeItemButton: elem.hasAttribute('multiple')
+        });
+    });
+
+    // const jsChoiceMultiple =
+</script>
+</body>
+</html>

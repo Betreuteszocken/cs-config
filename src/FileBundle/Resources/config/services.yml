@@ -1,0 +1,4 @@
+services:
+  Betreuteszocken\CsConfig\FileBundle\Service\FileService:
+    class: Betreuteszocken\CsConfig\FileBundle\Service\FileService
+    public: true

@@ -1,0 +1,31 @@
+{#- @var maps \Betreuteszocken\CsConfig\Entity\Map[] -#}
+{#- @var total int -#}
+
+{%- extends 'base.html.twig' -%}
+
+{%- block page -%}
+
+    <h2><a href="{{ path('maps') }}">Maps</a> > Forum-Maps</h2>
+
+    <section id="forum-maps">
+
+        <div class="forum-map heading">
+            <div class="name">Name</div>
+            <div class="amount">Anzahl Nennungen</div>
+        </div>
+
+        {% for _map in maps %}
+            <div class="forum-map">
+                <div class="name">{{ _map.name }}</div>
+                <div class="amount">{{ _map.count }}</div>
+            </div>
+        {% endfor %}
+
+        <div class="forum-map heading">
+            <div class="name">Gesamt</div>
+            <div class="amount">{{ total }}</div>
+        </div>
+
+    </section>
+
+{%- endblock page -%}

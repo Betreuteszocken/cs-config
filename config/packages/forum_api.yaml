@@ -1,0 +1,8 @@
+forum_api:
+
+  # The url to request the json api end point.
+  # Example: https://www.example.com/index.php?maps.json
+  url: '%env(string:USER_MAPS_URL)%'
+
+  # The last activity of an users to count his favorite map is maximum *days* in the past.
+  days: 120

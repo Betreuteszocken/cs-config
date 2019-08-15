@@ -1,0 +1,57 @@
+{#- @var mapCategories \Betreuteszocken\CsConfig\Entity\MapCategory[]-#}
+
+{%- extends 'base.html.twig' -%}
+
+{%- block page -%}
+
+    <h2><a href="{{ path('maps') }}">Maps</a> > nach Kategorie</h2>
+
+    <section id="map-categories">
+
+        <h3 id="heading-categories">Kategorien</h3>
+
+        <div class="map-category heading">
+            <div class="name">Name</div>
+            <div class="amount">Anzahl Karten</div>
+            <div class="regex">Regulärer Ausdruck</div>
+        </div>
+
+        {% for _category in mapCategories %}
+            {% set _category_name = _category.name is empty ? 'andere' : _category.name %}
+            <div class="map-category">
+                <div class="name"><a href="#heading-maps-{{ _category_name }}">{{ _category_name }}</a></div>
+                <div class="amount">{{ _category.maps|length }}</div>
+                <div class="regex"><code>{{ _category.regex is empty ? 'ohne' : _category.regex }}</code></div>
+            </div>
+        {% endfor %}
+
+    </section>
+
+    <section id="maps">
+
+        <h3 id="heading-maps">Maps</h3>
+
+        {% for _category in mapCategories %}
+            {% set _category_name = _category.name is empty ? 'andere' : _category.name %}
+            <article>
+                <h4 id="heading-maps-{{ _category_name }}" class="title">
+                    {{ _category_name }}
+                    ({{ _category.maps|length }})
+                </h4>
+
+                <ul class="maps">
+                    {% for __map in _category.maps %}
+                        {#- @var __map \Betreuteszocken\CsConfig\Entity\Map -#}
+                        {% if __map.origin %}
+                            <li class="map map-default" title="CS1.6 Standard-Map">{{ __map.name }}</li>
+                        {% else %}
+                            <li class="map">{{ __map.name }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+            </article>
+        {% endfor %}
+    </section>
+
+{%- endblock page -%}

@@ -1,0 +1,15 @@
+{#- @var mapCycle \Betreuteszocken\CsConfig\Entity\Cycle-#}
+{#- @var current  boolean -#}
+
+<article class="map-cycle">
+    <h3 id="map-cycle-heading-{{ mapCycle.id }}">
+        {% include 'map-cycle/map-cycle.heading-html.twig' with {'mapCycle' : mapCycle} only %}
+    </h3>
+
+    {% include 'map-cycle/history.maps.html.twig' with {'name': 'Mami-Maps','maps': mapCycle.mamiMaps} %}
+    {% include 'map-cycle/history.maps.html.twig' with {'name': 'Forum-Nutzer-Maps','maps': mapCycle.userMaps} %}
+    {% include 'map-cycle/history.maps.html.twig' with {'name': 'BZ-Standard-Maps','maps': mapCycle.defaultMaps} %}
+    {% include 'map-cycle/history.maps.html.twig' with {'name': 'Maps aus BZ-Standard-Kategorien','maps': mapCycle.defaultCategoryMaps} %}
+    {% include 'map-cycle/history.maps.html.twig' with {'name': 'Standard CS1.6 Maps','maps': mapCycle.originMaps} %}
+    {% include 'map-cycle/history.maps.html.twig' with {'name': 'Zufalls-Maps','maps': mapCycle.randomMaps} %}
+</article>

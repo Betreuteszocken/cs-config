@@ -1,0 +1,27 @@
+{#- @var cycles \Betreuteszocken\CsConfig\Entity\Cycle[]-#}
+
+{%- extends 'base.html.twig' -%}
+
+{%- block page -%}
+
+    <section id="map-cycles">
+
+        <h2><a href="{{ path('map-cycles') }}">Map-Cycle</a> > Historie</h2>
+
+        <ul class="maps">
+            {% for _mapCycle in cycles %}
+                <li>
+                    <a href="#map-cycle-heading-{{ _mapCycle.id }}">{% include 'map-cycle/map-cycle.heading-html.twig' with {'mapCycle' : _mapCycle} only %}</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% for _mapCycle in cycles %}
+            {% include 'map-cycle/map-cycyle.html.twig' with {'mapCycle': _mapCycle, 'current': false} %}
+        {% else %}
+            <p>Noch keine Map-Cycle vorhanden.</p>
+        {% endfor %}
+
+    </section>
+
+{%- endblock page -%}

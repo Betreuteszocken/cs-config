@@ -1,0 +1,138 @@
+pre {
+    /*background: grey;*/
+    /*color: white;*/
+    margin: 0;
+}
+
+pre.file {
+    background: grey;
+    color: white;
+    padding: 1em;
+}
+
+#content {
+    max-width: 60em;
+    margin: auto;
+}
+
+#map-categories .map-category {
+    display: table-row;
+}
+
+#map-categories .map-category > div {
+    display: table-cell;
+    padding: .2em .5em;
+}
+
+#map-categories .map-category.heading {
+    font-weight: bold;
+}
+
+#map-categories .map-category .amount {
+    text-align: center;
+}
+
+
+#forum-maps .forum-map {
+    display: table-row;
+}
+
+#forum-maps .forum-map > div {
+    display: table-cell;
+    padding: .2em .5em;
+}
+
+#forum-maps .forum-map.heading {
+    font-weight: bold;
+}
+
+#forum-maps .forum-map .amount {
+    text-align: center;
+}
+
+#admin-logs tr td {
+    vertical-align: top;
+}
+
+#admin-logs tr td.log-type {
+    text-transform: uppercase;
+}
+
+.map-cycle {
+    margin-bottom: 3em;
+}
+
+.map-cycle h3 {
+    padding-bottom: .2em;
+    border-bottom: 1px solid #333;
+}
+
+.map-cycle h3 > span {
+    margin-left: .2em;
+    font-size: .9em;
+}
+
+.map.removed {
+    color: #b22;
+}
+
+form {
+    margin-top: 1em;
+}
+
+input[type=text]:not(.choices__input),
+input[type=number] {
+    display: block;
+    vertical-align: top;
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 7.5px 7.5px 3.75px;
+    border: 1px solid #ddd;
+    border-radius: 2.5px;
+    font-size: 14px;
+    min-height: 24px;
+    overflow: hidden
+}
+
+input[type=number] {
+    max-width: 10em;
+}
+
+input[type=submit] {
+    width: auto;
+    margin-top: 1em;
+}
+
+label {
+    margin: .5em 0 .2em;
+    display: block;
+    text-decoration: underline;
+}
+
+
+input[type=text].choices__input {
+    display: inline-block;
+    padding: 4px 0 4px 2px;
+}
+
+
+.choices .choices__list--multiple .choices__item {
+    border-radius: 0;
+    background-color: #888;
+    border: 1px solid #333;
+    color: #fff;
+}
+
+.choices .choices__list--multiple .choices__item .choices__button {
+    border-color: #fff;
+}
+
+.choices .choices__list--multiple .choices__item[data-custom-properties*="removed"] {
+    background-color: #ff4444;
+    border: 1px solid #bb2222;
+}
+
+.choices .choices__list--multiple .choices__item.is-highlighted[data-custom-properties*="removed"] {
+    background-color: #a80000;
+    border: 1px solid #980000;
+}

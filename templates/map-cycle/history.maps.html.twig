@@ -1,0 +1,16 @@
+{#- @var name string -#}
+{#- @var maps \Betreuteszocken\CsConfig\Entity\Map[]-#}
+
+<h4>{{ name }} ({{ maps|length }})</h4>
+<ul class="maps">
+    {% for _map in maps %}
+        {% set _classes = ['map'] %}
+        {% if _map.origin %}
+            {% set _classes = _classes|merge(['map-default']) %}
+        {% endif %}
+        {% if _map.removed %}
+            {% set _classes = _classes|merge(['removed']) %}
+        {% endif %}
+        <li class="{{ _classes|join(' ') }}">{{ _map.name }}</li>
+    {% endfor %}
+</ul>

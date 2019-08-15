@@ -1,0 +1,44 @@
+{%- block navigation -%}
+
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ path('maps') }}">Maps</a>
+                <ul>
+                    <li>
+                        <a href="{{ path('maps') }}">nach Kategorie</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('maps-lexigraphically') }}">alphabetisch</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('maps-forum') }}">Forum-Maps</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="{{ path('map-cycles') }}">Map-Cycle</a>
+                <ul>
+                    <li>
+                        <a href="{{ path('map-cycle-history') }}">Historie</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('map-cycle-update-config') }}">Konfiguration</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="{{ path('admin') }}">Verwaltung</a>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin-default-config-update') }}">BZ-Einstellungen</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin-logs') }}">Log-Einträge</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+{%- endblock navigation -%}

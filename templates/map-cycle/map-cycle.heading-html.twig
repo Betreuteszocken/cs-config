@@ -1,0 +1,7 @@
+{#- @var mapCycle \Betreuteszocken\CsConfig\Entity\Cycle -#}
+
+{%- if mapCycle.current -%}
+    Aktueller Mapcycle <span class="date">(generiert am {{ mapCycle.config.updatedAt|date('d.m.Y, H:i:s') }})</span>
+{%- else -%}
+    Generiert am {{ mapCycle.config.updatedAt|date('d.m.Y, H:i:s') }}
+{%- endif -%}

@@ -1,0 +1,39 @@
+{#- @var form \Betreuteszocken\CsConfig\Form\Type\DefaultConfig\DefaultConfigFormType|\Symfony\Component\Form\FormView -#}
+
+{%- extends 'base.html.twig' -%}
+
+{%- block page -%}
+
+    <section id="administration-default-config">
+
+        <h2><a href="{{ path('admin') }}">Verwaltung</a> > BZ-Einstellungen</h2>
+
+        {{- form_start(form) -}}
+
+        <div class="form-group row">
+            <div class="col">
+                {{ form_label(form.maps) }}
+                {{ form_widget(form.maps) }}
+                {{ form_errors(form.maps) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                {{ form_label(form.mapCategories) }}
+                {{ form_widget(form.mapCategories) }}
+                {{ form_errors(form.mapCategories) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <input type="submit" value="BZ-Einstellungen speichern">
+            </div>
+        </div>
+
+        {{- form_end(form) -}}
+
+    </section>
+
+{%- endblock -%}

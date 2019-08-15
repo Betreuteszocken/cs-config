@@ -1,0 +1,65 @@
+{
+  "name": "betreuteszocken/cs-config",
+  "homepage": "https://github.com/betreuteszocken/cs-config",
+  "description": "Managing the map cycle of betreuteszocken via web",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Falko Matthies",
+      "email": "falko.m@web.de"
+    }
+  ],
+  "keywords": [
+    "betreuteszocken",
+    "maps",
+    "counter-strike",
+    "cs1.6",
+    "csgo"
+  ],
+  "require": {
+    "php": "^7.3",
+    "ext-ctype": "*",
+    "ext-iconv": "*",
+    "ext-json": "*",
+    "fincallorca/datetimebundle": "^1.0",
+    "knplabs/doctrine-behaviors": "^1.6",
+    "prokki/htpasswd": "^0.0",
+    "symfony/asset": "^4.3",
+    "symfony/console": "^4.3",
+    "symfony/dotenv": "^4.3",
+    "symfony/flex": "^1.4",
+    "symfony/form": "^4.3",
+    "symfony/framework-bundle": "^4.3",
+    "symfony/orm-pack": "^1.0",
+    "symfony/security-bundle": "^4.3",
+    "symfony/swiftmailer-bundle": "^3.2",
+    "symfony/twig-bundle": "^4.3",
+    "symfony/yaml": "^4.3"
+  },
+  "require-dev": {
+    "symfony/debug-pack": "^1.0"
+  },
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Betreuteszocken\\CsConfig\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Betreuteszocken\\CsConfig\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    }
+  }
+}

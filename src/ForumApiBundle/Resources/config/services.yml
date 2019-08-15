@@ -1,0 +1,8 @@
+services:
+  Betreuteszocken\CsConfig\ForumApiBundle\Service\ForumMapService:
+    class: Betreuteszocken\CsConfig\ForumApiBundle\Service\ForumMapService
+    public: false
+    arguments:
+      - '@service_container'
+
+  Betreuteszocken\CsConfig\ForumApiBundle\Service\ForumMapInterface: '@Betreuteszocken\CsConfig\ForumApiBundle\Service\ForumMapService'

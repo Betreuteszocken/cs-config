@@ -1,0 +1,24 @@
+{#- @var maps \Betreuteszocken\CsConfig\Entity\Map[]-#}
+
+{%- extends 'base.html.twig' -%}
+
+{%- block page -%}
+
+    <h2><a href="{{ path('maps') }}">Maps</a> > alphabetisch</h2>
+
+    <section id="maps">
+
+        <ul class="maps">
+            {% for _map in maps %}
+                {#- @var _map \Betreuteszocken\CsConfig\Entity\Map -#}
+                {% if _map.origin %}
+                    <li class="map map-default" title="CS1.6 Standard-Map">{{ _map.name }}</li>
+                {% else %}
+                    <li class="map">{{ _map.name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+    </section>
+
+{%- endblock page -%}

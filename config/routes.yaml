@@ -1,0 +1,74 @@
+# a call of the / page redirects to the maps controller
+homepage:
+  path: /
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+  defaults:
+    route: maps
+    # make a permanent redirection...
+    permanent: true
+
+# maps
+
+maps:
+  path: /maps/by-category
+  controller: Betreuteszocken\CsConfig\Controller\MapController::indexMapsAction
+  methods: [GET]
+
+maps-lexigraphically:
+  path: /maps/lexigraphically
+  controller: Betreuteszocken\CsConfig\Controller\MapController::indexMapsLexigraphicallyAction
+  methods: [GET]
+
+maps-forum:
+  path: /maps/forum
+  controller: Betreuteszocken\CsConfig\Controller\MapController::indexUserMapsAction
+  methods: [GET]
+
+# map-cycle
+
+map-cycles:
+  path: /map-cycle
+  controller: Betreuteszocken\CsConfig\Controller\MapCycleController::indexAction
+  methods: [GET]
+
+map-cycle-history:
+  path: /map-cycle/history
+  controller: Betreuteszocken\CsConfig\Controller\MapCycleController::historyAction
+  methods: [GET]
+
+map-cycle-update-config:
+  path: /map-cycle/config
+  controller: Betreuteszocken\CsConfig\Controller\MapCycleController::updateCycleConfigAction
+  methods: [GET, POST]
+
+map-cycle-txt:
+  path: /mapcycle.txt
+  controller: Betreuteszocken\CsConfig\Controller\MapCycleController::mapcycleTxtAction
+  methods: [GET]
+
+# administration
+
+admin:
+  path: /administration
+  controller: Betreuteszocken\CsConfig\Controller\AdministrationController::indexAction
+  methods: [GET]
+
+admin-default-config-update:
+  path: /administration/default-config
+  controller: Betreuteszocken\CsConfig\Controller\AdministrationController::updateDefaultConfigAction
+  methods: [GET, POST]
+
+admin-logs:
+  path: /administration/logs
+  controller: Betreuteszocken\CsConfig\Controller\AdministrationController::logsAction
+  methods: [GET]
+
+admin-mapcycletxt-recreate:
+  path: /administration/map-map-cycle
+  controller: Betreuteszocken\CsConfig\Controller\AdministrationController::recreateCycleAction
+  methods: [POST]
+
+admin-map-files-sync:
+  path: /administration/map-files
+  controller: Betreuteszocken\CsConfig\Controller\AdministrationController::syncMapFilesAction
+  methods: [POST]
