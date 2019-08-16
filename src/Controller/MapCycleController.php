@@ -106,16 +106,17 @@ class MapCycleController extends AbstractController
     /**
      * @return Response
      */
-    public function   mapcycleTxtAction(): Response
+    public function mapcycleTxtAction(): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
 
         $cycle = $entityManager->getRepository(Cycle::class)->findCurrent();
 
         return new Response($cycle->getMapcycleTxt(), 200, [
-            'Content-Type'  => 'text/plain',
+            'Content-Type'   => 'text/plain',
             // https://developer.mozilla.org/de/docs/Web/HTTP/Headers/Cache-Control#Caching_verhindern
-            'Cache-Control' => 'no-cache, no-store, must-revalidate',
+            'Cache-Control'  => 'no-cache, no-store, must-revalidate',
+            'Content-Length' => strlen($cycle->getMapcycleTxt())
         ]);
     }
 }
