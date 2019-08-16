@@ -26,12 +26,12 @@ class MapFileService
      * MapService constructor.
      *
      * @param ContainerInterface $container
-     * @param FileService $fileService
+     * @param FileService        $fileService
      */
     public function __construct(ContainerInterface $container, FileService $fileService)
     {
         $this->fileService = $fileService;
-        $this->mapPath = $container->getParameter('bz.cs_config.map_dir');
+        $this->mapPath     = $container->getParameter('bz.cs_config.map_dir');
     }
 
     /**
@@ -49,7 +49,7 @@ class MapFileService
 
             $_mapName = preg_filter('/^(.+)\.bsp$/i', '$1', $_pathInfo);
 
-            $mapFileNames[$_mapName] = $_mapName;
+            $mapFileNames[strtolower($_mapName)] = $_mapName;
         }
 
         return $mapFileNames;
