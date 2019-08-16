@@ -14,25 +14,10 @@ use Symfony\Component\Routing\RouteCollectionBuilder;
 /**
  * Class Kernel
  *
- * [x] prepare server to use php 7.3!
- * [x] OK SSL!
- * [x] Command to generate a new cycle
- * [x] action to access the current mapcycle.txt
- * [x] user login in security.yml save passwords extern!
- * [x] DateTime UTC database
- * [x] Extend log entries (change bz config, change map cycle config, etc.)
- * [x] check all files
- * [x] test empty database
- * [ ] push to github
- * [ ] htaccess for mapcycleTxtAction
- * [ ] history
- * [ ] cronjobs
- * [ ] htpasswd
+ * [ ] Version 0.0 / CHANGELOG
+ * [ ] README.md / forum documentation
  *
- * issue for later:
- * [ ] add new column for each map to include optional settings: http://piny.be/ahl/example-mapcycle.txt
- * [ ] flash messages
- *
+ * @package Betreuteszocken\CsConfig
  */
 class Kernel extends BaseKernel
 {
