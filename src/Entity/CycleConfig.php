@@ -83,6 +83,20 @@ class CycleConfig extends BaseEntity
     }
 
     /**
+     * The only object which is cloned are objects fo this class.
+     *
+     * To copy an existing configuration successfully,
+     * 1. the mami maps are copied properly
+     * 2. the timestampable properties are reset to `null`.
+     */
+    function __clone()
+    {
+        $this->mamiMaps  = new ArrayCollection($this->mamiMaps->toArray());
+        $this->createdAt = null;
+        $this->updatedAt = null;
+    }
+
+    /**
      * @return Map[]|Collection
      */
     public function getMamiMaps(): Collection
