@@ -17,14 +17,39 @@
             </li>
         </ul>
 
+        <h3>Aktionen</h3>
+
+        <p><strong>ACHTUNG</strong>: Alle unten aufgeführten Aktionen werden automatisiert angestoßen. Bitte nur im
+            Notfall benutzen.</p>
+
+        <h4>Karten synchronisieren</h4>
+
+        <p>Die Aktion <em>Karten synchronisieren</em>
+            synchronisiert alle in der Datenbank gespeicherten Maps mit denjenigen auf dem Fast-Download-Server.
+            Karten, die auf dem FastDL-Server nicht mehr vorhanden sind, werden hier im Map-Cycle-Konfigurationstool
+            als gelöscht markiert. Neue Karten werden im Tool sichtbar. Die Aktion läuft
+            <em>jeden Sonntag und Montag jeweils um 2:40 Uhr</em>.
+        </p>
+
         <form action="{{ path('admin-map-files-sync') }}" method="POST">
             <input type="submit" value="Karten synchronisieren">
-            <span>Synchronisiert alle in der Datenbank gespeicherten Karten mit den FastDL-Karten.</span>
+            <span></span>
         </form>
+
+        <h4>Neuen Map-Cycle generieren</h4>
+
+        <p>Die Aktion <em>Neuen Map-Cycle generieren</em>
+            erstellt einen komplett neuen Map-Cycle aus der aktuellen
+            <a href="{{ path('map-cycle-update-config') }}">Map-Cycle Konfiguration</a>. D.h. Karten neben den fest
+            eingestellten MaMi-Karten werden allen anderen Karten zufällig hinzugefügt und eine
+            neue <code>mapcycle.txt</code> Datei ersteltt. Die Generation des neuen Map-Cycle wird
+            <em>jeden Donnerstat um 3:28 Uhr</em> durchgeführt.
+        </p>
+        <p>Die erstellte <code>mapcycle.txt</code> wird jede 10 Minuten auf den cs1.6 Server kopiert.</p>
 
         <form action="{{ path('admin-mapcycletxt-recreate') }}" method="POST">
             <input type="submit" value="Neuen Map-Cycle generieren">
-            <span>Wählt neue Karten gemäß der aktuellen Map-Cycle-Konfiguration und generiert eine neue <code>mapcycle.txt</code> Datei.</span>
+            <span></span>
         </form>
 
     </section>

@@ -50,6 +50,11 @@ pre.file {
     text-align: center;
 }
 
+#administration h4
+{
+    margin-top: 3em;
+}
+
 #admin-logs tr td {
     vertical-align: top;
 }
