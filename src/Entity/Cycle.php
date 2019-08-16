@@ -9,7 +9,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * @ORM\Entity(repositoryClass="\Betreuteszocken\CsConfig\Repository\CycleRepository")
- * @ORM\Table(name="map_cycle")
+ * @ORM\Table(name="cycle")
  *
  * @package Betreuteszocken\CsConfig
  */
@@ -100,7 +100,7 @@ class Cycle extends BaseEntity
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text")
+     * @ORM\Column(name="mapcycle_txt", type="text")
      */
     protected $mapcycleTxt = '';
 
