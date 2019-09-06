@@ -50,12 +50,14 @@ class LogService
     /**
      * @param string $message
      * @param int    $type
+     * @param bool   $error
      */
-    protected function log(string $message, $type = LogType::TYPE_COMMON): void
+    protected function log(string $message, $type = LogType::TYPE_COMMON, bool $error = false): void
     {
         $log = Log::create()
                   ->setType($type)
                   ->setMessage($message)
+                  ->setError($error)
         ;
 
         $this->entityManager->persist($log);
@@ -66,7 +68,7 @@ class LogService
      * @param Map[] $insertedMaps
      * @param Map[] $deletedMaps
      */
-    public function logSyncUpdate($insertedMaps = array(), $deletedMaps = array()): void
+    public function logSyncUpdate(array $insertedMaps = array(), array $deletedMaps = array()): void
     {
         $message = '';
 

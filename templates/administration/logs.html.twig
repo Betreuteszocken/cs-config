@@ -16,7 +16,7 @@
                 <th>Inhalt/Hinweis</th>
             </tr>
             {% for _log in logs %}
-                <tr class="log">
+                <tr class="log{% if _log.error %} error{% endif %}">
                     <td>
                         <pre>{{ _log.createdAt|date('Y-m-d H:i:s') }}</pre>
                     </td>

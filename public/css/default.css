@@ -55,6 +55,11 @@ pre.file {
     margin-top: 3em;
 }
 
+#admin-logs tr.error {
+    background-color: red;
+    color: white;
+}
+
 #admin-logs tr td {
     vertical-align: top;
 }

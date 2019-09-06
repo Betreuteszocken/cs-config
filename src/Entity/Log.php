@@ -35,6 +35,13 @@ class Log extends BaseEntity
     protected $message = '';
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="error", type="boolean", options={"default":false})
+     */
+    protected $error = false;
+
+    /**
      * @return integer
      */
     public function getType(): int
@@ -69,6 +76,25 @@ class Log extends BaseEntity
     public function setMessage(string $message): Log
     {
         $this->message = $message;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isError(): bool
+    {
+        return $this->error;
+    }
+
+    /**
+     * @param boolean $error
+     *
+     * @return Log
+     */
+    public function setError(bool $error): Log
+    {
+        $this->error = $error;
         return $this;
     }
 }
