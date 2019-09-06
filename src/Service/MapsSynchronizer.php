@@ -3,6 +3,7 @@
 namespace Betreuteszocken\CsConfig\Service;
 
 use Betreuteszocken\CsConfig\Entity\Map;
+use Betreuteszocken\CsConfig\Exception\MultipleMapsException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -53,12 +54,38 @@ class MapsSynchronizer
         $this->logService     = $logService;
     }
 
+
+    protected function checkDoubles(array $mapFileNames, OutputInterface $output): array
+    {
+        $copy = array();
+
+        foreach ($mapFileNames as $mapFileName)
+        {
+            $_lowerMapFileName = strtolower($mapFileName);
+
+            if(!array_key_exists($_lowerMapFileName, $copy))
+            {
+                $copy[$_lowerMapFileName] = [$mapFileName];
+            }
+            else
+            {
+                array_push($copy[$_lowerMapFileName], $mapFileName);
+            }
+        }
+
+        return array_filter($copy, function (array $mapFileNames) {
+            return count($mapFileNames) > 1;
+        });
+    }
+
     /**
      * @param boolean              $dryRun
      * @param OutputInterface|null $output
      *
      * @return Map[] all new maps and maps which have been deleted,
      *               use {@see \Betreuteszocken\CsConfig\Entity\Map::isRemoved()} to detect wether the maps are new or deleted
+     *
+     * @throws MultipleMapsException
      */
     public function sync($dryRun = false, ?OutputInterface $output = null): array
     {
@@ -78,6 +105,15 @@ class MapsSynchronizer
 
         if ($output->getVerbosity() >= OutputInterface::VERBOSITY_NORMAL) {
             $output->writeln('<info>done</info>');
+        }
+
+        $multipleMaps = $this->checkDoubles($currentMapFileNames, $output);
+        if(!empty($multipleMaps)) {
+            if(!$dryRun)
+            {
+                $this->logService->logSyncUpdateErrorMultipleMaps($multipleMaps);
+            }
+            throw new MultipleMapsException(null,0, null, $multipleMaps);
         }
 
         // 2. get installed map from database

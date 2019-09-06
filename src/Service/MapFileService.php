@@ -49,7 +49,7 @@ class MapFileService
 
             $_mapName = preg_filter('/^(.+)\.bsp$/i', '$1', $_pathInfo);
 
-            $mapFileNames[strtolower($_mapName)] = $_mapName;
+            $mapFileNames[$_mapName] = $_mapName;
         }
 
         return $mapFileNames;

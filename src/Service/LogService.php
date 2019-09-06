@@ -65,6 +65,20 @@ class LogService
     }
 
     /**
+     * @param array $multipleMaps
+     */
+    public function logSyncUpdateErrorMultipleMaps(array $multipleMaps): void
+    {
+        $message = 'Error - Please remove duplicate maps (except of one) with the same name and run again:';
+        foreach ($multipleMaps as $mapFileNames)
+        {
+            $message .= sprintf("\n * %s", implode(', ', $mapFileNames));
+        }
+
+        $this->log($message, LogType::TYPE_SYNC_MAPS, true);
+    }
+
+    /**
      * @param Map[] $insertedMaps
      * @param Map[] $deletedMaps
      */

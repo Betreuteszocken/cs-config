@@ -2,6 +2,7 @@
 
 namespace Betreuteszocken\CsConfig\Command;
 
+use Betreuteszocken\CsConfig\Exception\MultipleMapsException;
 use Betreuteszocken\CsConfig\Service\LogService;
 use Betreuteszocken\CsConfig\Service\MapFileService;
 use Betreuteszocken\CsConfig\Service\MapsSynchronizer;
@@ -75,7 +76,19 @@ Hint: Use one of the verbose modes to get more information while running the com
 
         $io->writeln(sprintf('[%s]', date_create()->format('Y-m-m H:i:s')));
 
-        $persistedMaps = $this->mapSynchronizer->sync($dryRun, $output);
+        try
+        {
+            $persistedMaps = $this->mapSynchronizer->sync($dryRun, $output);
+        }
+        catch (MultipleMapsException $exception) {
+            $output = 'Please remove duplicate maps with the same name and run again:';
+            foreach ($exception->getMultipleMaps() as $mapFileNames)
+            {
+                $output .= sprintf("\n * %s", implode(', ', $mapFileNames));
+            }
+            $io->error($output);
+            return 1;
+        }
 
         if (empty($persistedMaps)) {
             $io->success('Maps successfully synchronized - no differences detected.');

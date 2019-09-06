@@ -6,6 +6,7 @@ use Betreuteszocken\CsConfig\Entity\CycleConfig;
 use Betreuteszocken\CsConfig\Entity\Log;
 use Betreuteszocken\CsConfig\Entity\Map;
 use Betreuteszocken\CsConfig\Entity\MapCategory;
+use Betreuteszocken\CsConfig\Exception\MultipleMapsException;
 use Betreuteszocken\CsConfig\Form\Type\DefaultConfig\DefaultConfigFormType;
 use Betreuteszocken\CsConfig\Model\Form\DefaultConfig\DefaultConfigFormModel;
 use Betreuteszocken\CsConfig\Service\CycleGenerator;
@@ -105,7 +106,9 @@ class AdministrationController extends AbstractController
      */
     public function syncMapFilesAction(MapsSynchronizer $mapsSynchronizer)
     {
-        $maps = $mapsSynchronizer->sync();
+        try
+        {
+            $persistedMaps = $mapsSynchronizer->sync();
 
 //        if(empty($maps))
 //        {
@@ -116,6 +119,11 @@ class AdministrationController extends AbstractController
 //            flash message!
 //        }
 
+
+        }
+        catch (MultipleMapsException $exception) {
+//            flash message!
+        }
         return $this->redirectToRoute('maps');
     }
 
